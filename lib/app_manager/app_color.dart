@@ -4,7 +4,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:mascotfootwear/lib/app_manager/extentions/hex_color_extention.dart';
+import 'package:mascotfootwear/app_manager/extentions/hex_color_extention.dart';
 
 class AppColor {
 

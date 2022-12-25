@@ -7,7 +7,7 @@
 
 import 'package:custom_searchable_dropdown/custom_searchable_dropdown.dart';
 import 'package:flutter/material.dart';
-import 'package:mascotfootwear/lib/app_manager/widgets/text_field/primary_text_field_util.dart';
+import 'package:mascotfootwear/app_manager/widgets/text_field/primary_text_field_util.dart';
 
 import '../../app_color.dart';
 import '../../text_theme.dart';

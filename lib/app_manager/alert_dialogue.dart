@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:mascotfootwear/lib/app_manager/text_theme.dart';
-import 'package:mascotfootwear/lib/app_manager/widgets/buttons/primary_button.dart';
+import 'package:mascotfootwear/app_manager/text_theme.dart';
+import 'package:mascotfootwear/app_manager/widgets/buttons/primary_button.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'app_color.dart';
 import 'widgets/tab_responsive.dart';

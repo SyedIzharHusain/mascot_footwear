@@ -3,12 +3,11 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-
-import '../app_manager/alert_toast.dart';
-import '../app_manager/progress_dialogue.dart';
-import '../app_manager/user_dart.dart';
-import '../models/demo.dart';
-import '../models/seModel.dart';
+import 'package:mascotfootwear/models/demo.dart';
+import 'package:mascotfootwear/models/seModel.dart';
+import '../../app_manager/alert_toast.dart';
+import '../../app_manager/progress_dialogue.dart';
+import '../../app_manager/user_dart.dart';
 
 
 

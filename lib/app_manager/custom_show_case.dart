@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mascotfootwear/lib/app_manager/typography.dart';
+import 'package:mascotfootwear/app_manager/typography.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 class CustomShowCase extends StatelessWidget {

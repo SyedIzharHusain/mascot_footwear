@@ -6,7 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
-import 'package:mascotfootwear/lib/app_manager/extentions/hex_color_extention.dart';
+import 'package:mascotfootwear/app_manager/extentions/hex_color_extention.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../app_color.dart';
 import '../text_theme.dart';

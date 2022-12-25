@@ -1,17 +1,14 @@
 
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/services/text_formatter.dart';
-import 'package:mascotfootwear/lib/app_manager/widgets/text_field/primary_text_field_util.dart';
+import 'package:flutter/services.dart';
+import 'package:mascotfootwear/app_manager/widgets/text_field/primary_text_field_util.dart';
+
 import '../../app_color.dart';
 import '../../text_theme.dart';
 
 
-
-
-
-
-
-class PrimaryTextField extends StatelessWidget {
+class PrimaryDateTimeField extends StatelessWidget {
 
   final String? hintText;
   final Widget? suffixIcon;
@@ -22,7 +19,6 @@ class PrimaryTextField extends StatelessWidget {
   final int? maxLength;
   final bool? enabled;
   final TextAlign? textAlign;
-  final TextInputType? keyboardType;
   final InputDecoration? decoration;
   final ValueChanged? onChanged;
   final Color? borderColor;
@@ -35,15 +31,20 @@ class PrimaryTextField extends StatelessWidget {
   final BoxConstraints? prefixIconConstraints;
   final List<TextInputFormatter>? inputFormatters;
 
+  final DateTimePickerType? dateTimePickerType;
+  final String? initialValue;
+  final bool? useFutureDate;
+  final DateTime? firstDate;
+  final DateTime? lastDate;
 
-  const PrimaryTextField({Key? key, this.hintText, this.controller,
+
+  const PrimaryDateTimeField({Key? key, this.hintText, this.controller,
     this.validator,
     this.prefixIcon,
     this.suffixIcon,
     this.maxLength,
     this.enabled,
     this.textAlign,
-    this.keyboardType,
     this.decoration,
     this.onChanged,
     this.borderColor,
@@ -55,14 +56,33 @@ class PrimaryTextField extends StatelessWidget {
     this.suffixIconConstraints,
     this.prefixIconConstraints,
     this.style,
+
+    this.dateTimePickerType,
+    this.initialValue,
+    this.useFutureDate,
     this.inputFormatters,
+    this.firstDate,
+    this.lastDate,
+
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return
-      TextFormField(
+      DateTimePicker(
         inputFormatters: inputFormatters,
+
+          type: dateTimePickerType?? DateTimePickerType.date,
+          dateMask: (dateTimePickerType==DateTimePickerType.dateTime)?'dd/MM/yyy    hh:mm a':
+          (dateTimePickerType==DateTimePickerType.time)?
+          'hh:mm a'
+              :
+          'dd/MM/yyy',
+          initialValue: initialValue,
+          firstDate: firstDate??( (useFutureDate?? false)? DateTime.now():DateTime(1980)),
+          lastDate: lastDate?? ((useFutureDate?? false)? DateTime.now().add(const Duration(days: 30)):DateTime.now()),
+          icon: const Icon(Icons.event),
+
           cursorColor: AppColor.black,
           enabled: enabled??true,
           controller: controller,
@@ -72,32 +92,27 @@ class PrimaryTextField extends StatelessWidget {
           maxLines: maxLine==null? 1:100,
           maxLength: maxLength,
           textAlign: textAlign?? TextAlign.start,
-          keyboardType: keyboardType,
           onChanged: onChanged==null? null:(val){
             onChanged!(val);
           },
-
           // style:  MyTextTheme().mediumBCN,
           decoration: decoration??InputDecoration(
-            floatingLabelBehavior: FloatingLabelBehavior.always,
             filled: true,
-            isDense: false,
+            isDense: true,
             fillColor: (enabled??true)?
             backgroundColor??
                 PrimaryTextFieldUtil.fillColor:Colors.grey.shade200,
             counterText: '',
             //contentPadding: isPasswordField==null? EdgeInsets.all(5):isPasswordField? EdgeInsets.fromLTRB(5,5,5,5):EdgeInsets.all(5),
-            contentPadding:  const EdgeInsets.all(12),
+            contentPadding: const EdgeInsets.all(10),
             hintText: hintText,
             hintStyle: MyTextTheme.mediumPCN.copyWith(
-                color:hintTextColor?? AppColor.greyDark,
-              fontSize: 14,
+                color:hintTextColor?? AppColor.greyDark
             ),
             labelText: labelText,
             labelStyle: MyTextTheme.smallPCB,
             errorStyle: MyTextTheme.mediumBCN.copyWith(
-                color: AppColor.error,
-              fontSize: 14,
+                color: AppColor.error
             ),
 
             suffixIconConstraints: suffixIconConstraints??const BoxConstraints(
@@ -155,10 +170,3 @@ class PrimaryTextField extends StatelessWidget {
       );
   }
 }
-
-
-
-
-
-
-
